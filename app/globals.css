@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* ── Design tokens (ver DESIGN.md). Tema único escuro, azul só como acento. ── */
+@theme {
+  --color-ink-950: #05090a; /* fundo da página */
+  --color-ink-925: #0a0e10; /* faixa alternada sutil */
+  --color-ink-900: #121617; /* card */
+  --color-ink-850: #191c1d; /* card elevado / hover */
+  --color-ink-800: #23282a; /* borda forte, input */
+  --color-line: #1f2426; /* borda padrão 1px */
+  --color-line-strong: #2f3436;
+
+  --color-fg: #f4f5f6; /* texto principal */
+  --color-fg-muted: #a1a6ab; /* parágrafo */
+  --color-fg-subtle: #6b7177; /* labels, metadados */
+  --color-fg-faint: #3d4347;
+
+  --color-blue-600: #054ab2; /* marca */
+  --color-blue-500: #1a5fd0; /* hover */
+  --color-blue-400: #3f7fe8; /* acento em texto/linhas sobre escuro */
+  --color-blue-300: #8fb2ee;
+  --color-blue-950: #071a38; /* fundo de ícone azul */
+
+  --color-green-500: #2bb673;
+  --color-green-950: #0b2a1f;
+  --color-yellow-300: #f4f1a0;
+  --color-purple-400: #9a6bff;
+  --color-magenta-400: #d06ad8;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-pixel: var(--font-geist-pixel-square), var(--font-geist-mono), monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ink-950 text-fg font-sans antialiased;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-blue-600);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-blue-400);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ── Utilitários de textura ── */
+@utility dot-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in srgb, var(--color-fg) 14%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 12px 12px;
+}
+@utility dot-grid-blue {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in srgb, var(--color-blue-400) 35%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 12px 12px;
+}
+@utility line-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+@utility noise {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+}
+@utility fade-x {
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+@utility pixelated {
+  image-rendering: pixelated;
+}
+
+/* Marquee infinito: o conteúdo é duplicado e desliza -50%. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@utility animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@utility animate-blink {
+  animation: blink 1s steps(1) infinite;
+}
