@@ -47,7 +47,7 @@ Nav ─ logo "GA" · Sobre · Experiência · Engenharia · Stack · Conquistas 
 | **−74%** | Payload do painel no 1º acesso (4,75 MB para 1,26 MB) |
 | **96 ms → 0,04 ms** | Paginação de eventos com índice, em 300 mil registros |
 | **40 → 10** | Chamadas à API sobre conexões TCP, sem reconectar o WebSocket |
-| **51 / 24** | Requisitos no PRD / testes unitários antes do deploy |
+| **R$ 22 mil/mês** | Redução de custo na Cargill (Jataí-GO) com os algoritmos determinístico + random forest do pid-service |
 
 Abaixo, o **heatmap de contribuições** (53 semanas × 7 dias) com quadrados retos em 5 níveis de azul, total de contribuições no canto e as células entrando em cascata por coluna.
 
@@ -88,7 +88,7 @@ senha mestre ─Argon2id─▶ master key ─HKDF─┬─▶ auth hash ──�
 ```
 A senha vira bytes embaralhados a cada etapa, e só os blobs cifrados atravessam a linha "cliente | servidor". Na lateral fica um mini-terminal com o escudo braille girando e virando ✓.
 
-**E/F.** Espaço reservado para os **2 projetos da empresa**, que você vai mandar depois.
+**Projetos (seção própria, antes de Engenharia):** ISA (`~/Development/new-isa`) e Comissões (`~/Development/web-commission`), com diagrama de arquitetura/deploy.
 
 > ⚠ Confidencialidade: os diagramas da Comber usam só nomes genéricos (CLP, WebSocket, web-service, pid-service). Nada de cliente, planta, "fornalha/secador" nem valores reais de calibração.
 

@@ -1,0 +1,28 @@
+/* Células do heatmap: escala de 5 níveis, do ink-850 ao blue-400. */
+.cell {
+  display: block;
+  aspect-ratio: 1;
+  background: #191c1d;
+}
+.cell[data-l="1"] { background: #0b2350; }
+.cell[data-l="2"] { background: #0d3a85; }
+.cell[data-l="3"] { background: #054ab2; }
+.cell[data-l="4"] { background: #3f7fe8; }
+
+/* Contorno interno: nunca é cortado pelo container que rola. */
+.cell[data-i]:hover { outline: 1px solid #f4f5f6; outline-offset: -1px; }
+.cell:focus-visible { outline: 2px solid #f4f5f6; outline-offset: -2px; }
+
+/* Colunas entram em cascata (esq → dir) quando o frame recebe data-in. */
+@media (prefers-reduced-motion: no-preference) {
+  .frame:not([data-in]) .col { opacity: 0; }
+  .frame[data-in] .col {
+    animation: col-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i) * 12ms) both;
+  }
+}
+@keyframes col-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

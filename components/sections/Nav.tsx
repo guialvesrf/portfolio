@@ -41,7 +41,7 @@ export function Nav({ lang }: { lang: Locale }) {
       <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href={`/${lang}`} className="flex items-center gap-2.5" aria-label={site.name}>
           <Logo />
-          <span className="font-pixel text-lg leading-none text-fg sm:text-xl">{site.name}</span>
+          <span className="whitespace-nowrap font-pixel text-lg leading-none text-fg sm:text-xl">{site.name}</span>
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Principal">
@@ -54,7 +54,7 @@ export function Nav({ lang }: { lang: Locale }) {
 
         <div className="flex items-center gap-2 sm:gap-3">
           <LangToggle lang={lang} hash={hash} />
-          <Button href="#contato" variant="outline" size="sm" className="hidden sm:inline-flex">
+          <Button href="#contato" variant="outline" size="sm" className="max-sm:hidden">
             {contact}
           </Button>
           <button

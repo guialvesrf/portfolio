@@ -1,0 +1,18 @@
+/* Spinner braille do TUI do Guardian: uma coluna de 10 glifos deslizando em steps. */
+.spin {
+  display: inline-block;
+  height: 1.25em;
+  line-height: 1.25em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.spin > span {
+  display: flex;
+  flex-direction: column;
+  animation: spin 0.9s steps(10) infinite;
+}
+@keyframes spin {
+  to {
+    transform: translateY(-100%);
+  }
+}
