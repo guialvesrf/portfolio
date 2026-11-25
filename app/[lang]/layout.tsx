@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { GeistPixelSquare } from "geist/font/pixel";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { hasLocale, locales } from "@/lib/i18n";
 import "../globals.css";
 
@@ -40,7 +41,10 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       lang={lang === "pt" ? "pt-BR" : "en"}
       className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
